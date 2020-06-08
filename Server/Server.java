@@ -24,27 +24,33 @@ public class Server implements Runnable {
 
     @Override
     public void run() {
-        try (ObjectInputStream fromClient = new ObjectInputStream(socket.socket().getInputStream())){
-            Object obj = fromClient.readObject();//Вылетает тутЫS
-            if (obj instanceof Command) {
-                User user = (User) fromClient.readObject();
-                Command cmd = (Command) obj;
-                executeIt.execute(new MessageHandler(socket, myCollection, cmd, user));//
-                System.out.println("Connection accepted. com");//
-            } else {
-                User user = (User) obj;
-                System.out.println("Connection accepted. us");//
-                executeIt.execute(new MessageHandler(socket, myCollection, user));//
+        try (ObjectInputStream bool = new ObjectInputStream(socket.socket().getInputStream())){
+            if ((Boolean) bool.readObject()){
+                try (ObjectInputStream fromClient = new ObjectInputStream(socket.socket().getInputStream())){
+                    Object obj = fromClient.readObject();
+                    if (obj instanceof Command) {
+                        User user = (User) fromClient.readObject();
+                        Command cmd = (Command) obj;
+                        executeIt.execute(new MessageHandler(socket, myCollection, cmd, user));//
+                        System.out.println("Connection accepted. com");//
+                    } else {
+                        User user = (User) obj;
+                        System.out.println("Connection accepted. us");//
+                        executeIt.execute(new MessageHandler(socket, myCollection, user));//
+                    }
+                    Thread.sleep(1000);
+                } catch (IOException | ClassNotFoundException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            Thread.sleep(1000);
-        } catch (IOException | ClassNotFoundException | InterruptedException e) {
+        }
+        catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }

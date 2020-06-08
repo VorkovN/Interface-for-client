@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #4682B4;">
+         <children>
+            <Text layoutX="179.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="14.0" layoutY="81.0" prefHeight="31.0" prefWidth="232.0" promptText="Name (string)" />
+      <TextField layoutX="14.0" layoutY="121.0" prefHeight="31.0" prefWidth="232.0" promptText="x (float)" />
+      <TextField layoutX="14.0" layoutY="161.0" prefHeight="31.0" prefWidth="232.0" promptText="y (double)" />
+      <TextField layoutX="14.0" layoutY="200.0" prefHeight="31.0" prefWidth="232.0" promptText="xl1 (long)" />
+      <TextField layoutX="14.0" layoutY="244.0" prefHeight="31.0" prefWidth="232.0" promptText="yl1 (double)" />
+      <TextField layoutX="14.0" layoutY="283.0" prefHeight="31.0" prefWidth="232.0" promptText="zl1 (long)" />
+      <TextField layoutX="14.0" layoutY="325.0" prefHeight="31.0" prefWidth="232.0" promptText="xl2 (int)" />
+      <TextField layoutX="14.0" layoutY="369.0" prefHeight="31.0" prefWidth="232.0" promptText="yl2 (float)" />
+      <TextField layoutX="14.0" layoutY="412.0" prefHeight="31.0" prefWidth="232.0" promptText="namel2 (string)" />
+      <TextField layoutX="14.0" layoutY="456.0" prefHeight="31.0" prefWidth="232.0" promptText="distance (float)" />
+   </children>
+</AnchorPane>

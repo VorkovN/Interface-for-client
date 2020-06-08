@@ -15,7 +15,7 @@
                   <Font size="34.0" />
                </font>
             </Text>
-            <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="76.0" style="-fx-background-color: #1E90FF;" text="Назад" />
+            <Button fx:id="backButton" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="76.0" style="-fx-background-color: #1E90FF;" text="Назад" />
          </children>
       </AnchorPane>
       <TextField fx:id="loginRegField" layoutX="164.0" layoutY="96.0" prefHeight="45.0" prefWidth="270.0" promptText="Имя" />

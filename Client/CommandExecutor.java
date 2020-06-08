@@ -15,8 +15,8 @@ import java.util.Scanner;
 
 public class CommandExecutor {
 
-    private static String address;
-    private static int port;
+    private String address;
+    private int port;
     private User user;
     private static CommandExecutor commandExecutor = null;
 
@@ -47,12 +47,6 @@ public class CommandExecutor {
             addCommand("show", new ShowCommand());
             addCommand("update", new UpdateCommand());
 
-            System.out.println("Input host");
-            address = new Scanner(System.in).nextLine();
-            System.out.println("Host is " + address);
-            System.out.println("Input port");
-            port = Integer.parseInt(new Scanner(System.in).nextLine());
-            System.out.println("Port is " + port);
         }
         return commandExecutor;
     }
@@ -63,8 +57,9 @@ public class CommandExecutor {
     }
 
     public void execute(String action) {
-        try(Socket socket = new Socket(address, port);
-            ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream())) {
+        try(Socket socket = new Socket(address, port)){
+            (new ObjectOutputStream(socket.getOutputStream())).writeObject(Boolean.TRUE);
+            ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
             String[] actionParts = action.split(" ");
             if (action.isEmpty()) {
                 return;
@@ -143,6 +138,7 @@ public class CommandExecutor {
             } else {
                 System.out.println("Wrong command input");
             }
+            toServer.close();
         }catch(IOException | ClassNotFoundException ignored){
         }
     }
@@ -158,6 +154,7 @@ public class CommandExecutor {
     public User registrationAuthorization(){
         try(Socket socket = new Socket(address, port)) {
             Thread.sleep(200);
+            (new ObjectOutputStream(socket.getOutputStream())).writeObject(Boolean.TRUE);
             ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
             toServer.writeObject(user);
             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
@@ -191,5 +188,19 @@ public class CommandExecutor {
 
     public User getUser() {
         return user;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void checkAddreess() throws IOException {
+        try(Socket socket = new Socket(address, port)) {
+            (new ObjectOutputStream(socket.getOutputStream())).writeObject(Boolean.FALSE);
+        }
     }
 }

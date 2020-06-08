@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -40,7 +41,7 @@
       <Button fx:id="infoButton" layoutX="27.0" layoutY="447.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #8B008B;" text="Info" />
       <Button fx:id="showButton" layoutX="27.0" layoutY="481.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #8B008B;" text="Show" />
       <Button fx:id="clearButton" layoutX="27.0" layoutY="515.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #800000;" text="Clear" />
-      <AnchorPane layoutX="248.0" layoutY="21.0" prefHeight="290.0" prefWidth="838.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 4;">
+      <AnchorPane layoutX="348.0" layoutY="21.0" prefHeight="290.0" prefWidth="738.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 4;">
          <children>
             <Text layoutX="361.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Графическое окно" />
          </children>
@@ -78,5 +79,6 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
+      <TextField layoutX="209.0" layoutY="72.0" prefHeight="34.0" prefWidth="116.0" promptText="Аргумент" style="-fx-border-color: #000000;" />
    </children>
 </AnchorPane>

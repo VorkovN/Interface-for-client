@@ -16,7 +16,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class RegistrationWindow {
-    public static User user;
 
     @FXML
     private TextField loginRegField;
@@ -28,7 +27,16 @@ public class RegistrationWindow {
     private Button regButton;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     void initialize() {
+
+        backButton.setOnAction(actionEvent -> {
+            backButton.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
+
         regButton.setOnAction(actionEvent -> {
             String login = loginRegField.getText().trim();
             String password = md5Custom(passwordRegField.getText().trim());
@@ -45,10 +53,12 @@ public class RegistrationWindow {
                     System.out.println("User already exist");
                     regButton.getScene().getWindow().hide();
                     newWindow("start.fxml");
+                    newWindow("reg_exception.fxml");
                 }
             }
             else{
-                System.out.println("Write login and password without spaces");
+                newWindow("start.fxml");
+                newWindow("reg_exception.fxml");
             }
         });
     }

@@ -28,9 +28,18 @@ public class AuthorizationWindow {
     @FXML
     private Button autButton;
 
+    @FXML
+    private Button backButton;
+
+
 
     @FXML
     void initialize() {
+        backButton.setOnAction(actionEvent -> {
+            backButton.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
+
         autButton.setOnAction(actionEvent -> {
             String login = loginAutField.getText().trim();
             String password = md5Custom(passwordAutField.getText().trim());
@@ -49,10 +58,12 @@ public class AuthorizationWindow {
                     System.out.println("Wrong Login or password");
                     autButton.getScene().getWindow().hide();
                     newWindow("start.fxml");
+                    newWindow("login_exception.fxml");
                 }
             }
             else{
-                System.out.println("Write login and password without spaces");
+                newWindow("start.fxml");
+                newWindow("login_exception.fxml");
             }
         });
     }

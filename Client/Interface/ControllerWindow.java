@@ -2,20 +2,23 @@ package Client.Interface;
 
 import Client.CommandExecutor;
 import Client.User;
+import Route.Route;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ControllerWindow {
 
+    private ObservableList<Route> routes = FXCollections.observableArrayList();
     CommandExecutor commandExecutor = CommandExecutor.getCommandExecutor();
     User user = commandExecutor.getUser();
 
@@ -65,6 +68,45 @@ public class ControllerWindow {
     private Button clearButton;
 
     @FXML
+    private TableView<Route> table;
+
+    @FXML
+    private TableColumn<Route, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Route, String> nameColumn;
+
+    @FXML
+    private TableColumn<Route, Float> xColumn;
+
+    @FXML
+    private TableColumn<Route, Double> yColumn;
+
+    @FXML
+    private TableColumn<Route, Long> xl1Column;
+
+    @FXML
+    private TableColumn<Route, Double> yl1Column;
+
+    @FXML
+    private TableColumn<Route, Long> zl1Column;
+
+    @FXML
+    private TableColumn<Route, Integer> xl2Column;
+
+    @FXML
+    private TableColumn<Route, Float> yl2Column;
+
+    @FXML
+    private TableColumn<Route, String> namel2Column;
+
+    @FXML
+    private TableColumn<Route, Float> distColumn;
+
+    @FXML
+    private TableColumn<Route, String> dateColumn;
+
+    @FXML
     private Button exitButton;
 
     @FXML
@@ -73,10 +115,26 @@ public class ControllerWindow {
     @FXML
     private TextArea console;
 
-
-
     @FXML
-    void initialize() {
+    void initialize() throws InterruptedException {
+
+        // устанавливаем тип и значение которое должно хранится в колонке
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
+        yColumn.setCellValueFactory(new PropertyValueFactory<>("y"));
+        xl1Column.setCellValueFactory(new PropertyValueFactory<>("xl1"));
+        yl1Column.setCellValueFactory(new PropertyValueFactory<>("yl1"));
+        zl1Column.setCellValueFactory(new PropertyValueFactory<>("zl1"));
+        xl2Column.setCellValueFactory(new PropertyValueFactory<>("xl2"));
+        yl2Column.setCellValueFactory(new PropertyValueFactory<>("yl2"));
+        namel2Column.setCellValueFactory(new PropertyValueFactory<>("namel2"));
+        distColumn.setCellValueFactory(new PropertyValueFactory<>("distance"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        // заполняем таблицу данными
+        routes.addAll(user.getArr());
+        table.setItems(routes);
 
         helpButton.setOnAction(actionEvent -> {
             commandExecutor.execute("help");
@@ -191,6 +249,7 @@ public class ControllerWindow {
         }
         return false;
     }
+
 }
 
 

@@ -1,7 +1,11 @@
 package Client;
 
+import Route.Route;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class User implements Serializable {
@@ -10,6 +14,7 @@ public class User implements Serializable {
     private boolean status;
     private String action;
     private Set<Integer> ids;;
+    private List<Route> arr;
 
     public User(String name, String password) {
         this.name = name;
@@ -57,4 +62,13 @@ public class User implements Serializable {
     public void removeId(int id){ ids.remove(id); }
 
     public Set<Integer> getIds() { return ids; }
+
+    public List<Route> getArr() {
+        return arr;
+    }
+
+    public void setArr(List<Route> arr) {
+        this.arr = arr;
+    }
+
 }

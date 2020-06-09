@@ -296,4 +296,9 @@ public class MyCollection implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public List<Route> getArr() {
+        return arr;
+    }
+
 }

@@ -32,24 +32,24 @@
             <Text layoutX="361.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Графическое окно" />
          </children>
       </AnchorPane>
-      <TableView layoutX="202.0" layoutY="319.0" prefHeight="290.0" prefWidth="967.0" style="-fx-background-color: #90EE90;">
+      <TableView fx:id="table" layoutX="202.0" layoutY="319.0" prefHeight="290.0" prefWidth="967.0" style="-fx-background-color: #90EE90;">
         <columns>
-          <TableColumn prefWidth="40.80000305175781" style="-fx-border-color: #696969;" text="ID" />
-          <TableColumn prefWidth="111.20001220703125" style="-fx-border-color: #696969;" text="Name" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="         x" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="         y" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        xl1" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        yl1" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        zl1" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        xl2" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        yl2" />
-            <TableColumn prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Namel2" />
-            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="       dist" />
-            <TableColumn prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Date" />
+          <TableColumn fx:id="idColumn" prefWidth="40.80000305175781" style="-fx-border-color: #696969;" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="111.20001220703125" style="-fx-border-color: #696969;" text="Name" />
+            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="         x" fx:id="xColumn" />
+            <TableColumn fx:id="yColumn" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="         y" />
+            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        xl1" fx:id="xl1Column" />
+            <TableColumn fx:id="yl1Column" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        yl1" />
+            <TableColumn fx:id="zl1Column" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        zl1" />
+            <TableColumn prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        xl2" fx:id="xl2Column" />
+            <TableColumn fx:id="yl2Column" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="        yl2" />
+            <TableColumn fx:id="namel2Column" prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Namel2" />
+            <TableColumn fx:id="distColumn" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="       dist" />
+            <TableColumn fx:id="dateColumn" prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Date" />
         </columns>
       </TableView>
       <Button fx:id="exitButton" layoutX="1169.0" layoutY="741.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="110.0" style="-fx-background-color: #800000;" text="Exit" />
-      <MenuButton layoutX="1110.0" layoutY="127.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="156.0" text="          Русский (RU)" textAlignment="CENTER">
+      <MenuButton layoutX="1094.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" text="          Русский (RU)" textAlignment="CENTER">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />

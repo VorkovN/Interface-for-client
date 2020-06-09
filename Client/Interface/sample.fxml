@@ -5,29 +5,15 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1280.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Interface.ControllerWindow">
    <children>
       <Button fx:id="helpButton" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: FF9933;" text="help" textAlignment="CENTER" />
-      <AnchorPane fx:id="nameField" layoutX="1105.0" layoutY="27.0" prefHeight="34.0" prefWidth="160.0" style="-fx-background-color: FFFFFF; -fx-border-color: F00000;">
-         <children>
-            <Text layoutX="2.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Имя" textAlignment="CENTER" wrappingWidth="156.41292190551758" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="addButton" layoutX="27.0" layoutY="72.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #4682B4;" text="Add">
-         <textFill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop color="BLACK" />
-                  <Stop color="WHITE" offset="1.0" />
-               </stops>
-            </RadialGradient>
-         </textFill></Button>
+      <Button fx:id="addButton" layoutX="27.0" layoutY="72.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #4682B4;" text="Add" />
       <Button fx:id="updateButton" layoutX="27.0" layoutY="107.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #4682B4;" text="Update id" />
       <Button fx:id="historyButton" layoutX="27.0" layoutY="141.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-background-color: #4682B4; -fx-border-color: #000000;" text="History" />
       <Button fx:id="removeFirstButton" layoutX="27.0" layoutY="175.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="160.0" style="-fx-border-color: #000000; -fx-background-color: #FF8C00;" text="Remove first" />
@@ -62,23 +48,14 @@
             <TableColumn prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Date" />
         </columns>
       </TableView>
-      <AnchorPane layoutY="609.0" prefHeight="182.0" prefWidth="1170.0" style="-fx-background-color: #696969; -fx-border-color: #F4A460; -fx-border-width: 3;">
-         <children>
-            <Text layoutX="510.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Окно вывода с консоли" />
-         </children>
-      </AnchorPane>
       <Button fx:id="exitButton" layoutX="1169.0" layoutY="741.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="110.0" style="-fx-background-color: #800000;" text="Exit" />
-      <AnchorPane fx:id="dateField" layoutX="1107.0" layoutY="72.0" prefHeight="34.0" prefWidth="156.0" style="-fx-border-color: #696969;">
-         <children>
-            <Text layoutX="41.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата время" />
-         </children>
-      </AnchorPane>
       <MenuButton layoutX="1110.0" layoutY="127.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="156.0" text="          Русский (RU)" textAlignment="CENTER">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <TextField layoutX="209.0" layoutY="72.0" prefHeight="34.0" prefWidth="116.0" promptText="Аргумент" style="-fx-border-color: #000000;" />
+      <TextField fx:id="argumentField" layoutX="209.0" layoutY="72.0" prefHeight="34.0" prefWidth="116.0" promptText="Аргумент" style="-fx-border-color: #000000;" />
+      <TextArea fx:id="console" layoutX="1.0" layoutY="609.0" prefHeight="181.0" prefWidth="1168.0" />
    </children>
 </AnchorPane>

@@ -31,7 +31,7 @@ public class ExecuteScriptCommand implements Command {
             }
             while ((line = bufferedReader.readLine()) != null) {
                 if (!line.equals("")) {
-                    System.out.println(">>>" + line);
+                    CommandExecutor.forPrint += ("\n" + ">>>" + line);
                 }
                 if (!scripts.contains(line)) {
                     if (line.split(" ")[0].equals("execute_script")) {
@@ -39,13 +39,12 @@ public class ExecuteScriptCommand implements Command {
                     }
                     commandExecutor.execute(line);
                 } else {
-                    System.out.println("script " + line + " has already done");
+                    CommandExecutor.forPrint += ("\n" + "script " + line + " has already done");
                 }
             }
             scripts.remove(scripts.size() - 1);
-            System.out.println();
         } catch (IOException e) {
-            System.out.println("File not found, please, input existent file");
+            CommandExecutor.forPrint += ("\n" + "File not found, please, input existent file");
         }
         return msg;
     }

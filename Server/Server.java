@@ -40,12 +40,10 @@ public class Server implements Runnable {
                     }
                     Thread.sleep(1000);
                 } catch (IOException | ClassNotFoundException | InterruptedException e) {
-                    e.printStackTrace();
                 }
                 try {
                     socket.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }

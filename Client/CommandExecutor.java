@@ -11,24 +11,24 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class CommandExecutor {
 
     private String address;
     private int port;
     private User user;
+    public static String forPrint;
     private static CommandExecutor commandExecutor = null;
+    private Route newRoute = null;
 
 
 
-    private static Map<String, Command> commands = new HashMap<>();
+    private static final Map<String, Command> commands = new HashMap<>();
     public ArrayList<String> history = new ArrayList<>();
 
     public static CommandExecutor getCommandExecutor(){
         if (commandExecutor == null) {
             commandExecutor = new CommandExecutor();
-
 
             addCommand("add", new AddCommand());
             addCommand("clear", new ClearCommand());
@@ -57,8 +57,10 @@ public class CommandExecutor {
     }
 
     public void execute(String action) {
+        System.out.println(action);
         try(Socket socket = new Socket(address, port)){
-            (new ObjectOutputStream(socket.getOutputStream())).writeObject(Boolean.TRUE);
+            ObjectOutputStream b = new ObjectOutputStream(socket.getOutputStream());
+            b.writeObject(Boolean.TRUE);
             ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
             String[] actionParts = action.split(" ");
             if (action.isEmpty()) {
@@ -68,27 +70,22 @@ public class CommandExecutor {
                 Command command = commands.get(actionParts[0]);
                 if (command != null) {
                     historyList(actionParts[0]);
+
                     if (command instanceof HistoryCommand || command instanceof ExitCommand) {
                         command.execute();
                     } else {
                         if (command instanceof AddCommand) {
-                            Route newRoute = null;
-                            try {
-                                newRoute = new Initialization().initialization(user);
-                            } catch (NumberFormatException e) {
-                                System.out.println("\nWrong input, please enter your values again!");
-                            }
                             command.setNewRoute(newRoute);
                         }
                         toServer.writeObject(command);
                         toServer.writeObject(user);
                         ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
-                        System.out.println(((MessageToServer) fromServer.readObject()).getStr());
+                        forPrint += ("\n" +((MessageToServer) fromServer.readObject()).getStr());
                         user = (User) fromServer.readObject();
                         fromServer.close();
                     }
                 } else {
-                    System.out.println("Commands.Command doesn't exist");
+                    forPrint += ("\n" + "Commands.Command doesn't exist");
                 }
             } else if (actionParts.length == 2) {
                 Command command = commands.get(actionParts[0]);
@@ -97,52 +94,38 @@ public class CommandExecutor {
                     historyList(actionParts[0]);
                     command.setArg(arg);
                     if (command instanceof ExecuteScriptCommand) {
+                        b.close();
                         toServer.close();
-                        ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
-                        fromServer.close();
                         command.execute();
                     } else {
                         if (command instanceof UpdateCommand) {
-                            System.out.println(checkId(user, arg));
-                            if (checkId(user, arg)){
-                                Route newRoute = null;
-                                try {
-                                    newRoute = new Initialization().initialization(user);
-                                } catch (NumberFormatException e) {
-                                    System.out.println("\nWrong input, please enter your values again!");
-                                }
-                                command.setNewRoute(newRoute);
-                                toServer.writeObject(command);
-                                toServer.writeObject(user);
-                                ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
-                                System.out.println(((MessageToServer) fromServer.readObject()).getStr());
-                                user = (User) fromServer.readObject();
-                                fromServer.close();
-                            }
-                            else{
-                                System.out.println("This element isn't belongs to you");
-                            }
+                            command.setNewRoute(newRoute);
+                            toServer.writeObject(command);
+                            toServer.writeObject(user);
+                            ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
+                            forPrint += ("\n" +((MessageToServer) fromServer.readObject()).getStr());
+                            user = (User) fromServer.readObject();
+                            fromServer.close();
                         }else{
                             toServer.writeObject(command);
                             toServer.writeObject(user);
                             ObjectInputStream fromServer = new ObjectInputStream(socket.getInputStream());
-                            System.out.println(((MessageToServer) fromServer.readObject()).getStr());
+                            forPrint += ("\n" +((MessageToServer) fromServer.readObject()).getStr());
                             user = (User) fromServer.readObject();
                             fromServer.close();
                         }
                     }
                 } else {
-                    System.out.println("Commands.Command doesn't exist");
+                    forPrint += ("\n" + "Commands.Command doesn't exist");
                 }
 
             } else {
-                System.out.println("Wrong command input");
+                forPrint += ("\n" + "Wrong command input");
             }
             toServer.close();
         }catch(IOException | ClassNotFoundException ignored){
         }
     }
-
 
     public void historyList(String command){
         if(history.size() > 6) {
@@ -165,22 +148,10 @@ public class CommandExecutor {
         catch (IOException | ClassNotFoundException | InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println(user.getIds());
-        System.out.println(user.getName());
-        System.out.println(user.getStatus());
         return user;
     }
 
-    public boolean checkId(User user, String arg){
-        System.out.println(user.getIds());
-        int a = Integer.parseInt(arg);
-        for (int i: user.getIds()) {
-            if (i == a){
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public void setUser(User user) {
         this.user = user;
@@ -203,4 +174,9 @@ public class CommandExecutor {
             (new ObjectOutputStream(socket.getOutputStream())).writeObject(Boolean.FALSE);
         }
     }
+
+    public void setNewRoute(Route newRoute) {
+        this.newRoute = newRoute;
+    }
+
 }

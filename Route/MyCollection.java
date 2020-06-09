@@ -89,7 +89,7 @@ public class MyCollection implements Serializable {
         lock.readLock().lock();
         try {
             return "type: Roue\n"
-                    + "Дата инициализации: " + arr.get(arr.stream().findFirst().get().getId()).getDate() + '\n'
+                    + "Дата инициализации: " + arr.get(0).getDate() + '\n'
                     + "Количество элементов: " + arr.size();
         } finally {
             lock.readLock().unlock();
@@ -148,6 +148,7 @@ public class MyCollection implements Serializable {
                     }
                     return "This element isn't belong to user";
                 }
+
             }
             return " No such element";
         } finally {
@@ -158,10 +159,10 @@ public class MyCollection implements Serializable {
     public String clear() {
         lock.writeLock().lock();
         try {
-            for (int i = arr.size(); i > 0; --i) {
+            for (int i = arr.size() - 1; i > -1; --i) {
                 if (user.getName().equals(arr.get(i).getUser())) {
-                    arr.remove(i);
                     user.removeId(arr.get(i).getId());
+                    arr.remove(i);
                 }
             }
             return "List was cleared";
@@ -221,21 +222,21 @@ public class MyCollection implements Serializable {
         }
     }
 
-    public String removeGreater(String arg) throws NumberFormatException{
+    public String removeGreater(String arg) throws NumberFormatException {
         lock.writeLock().lock();
         try {
-        int id = Integer.parseInt(arg);
-        arr = arr.stream().filter(route -> route.getId() < id ).collect(Collectors.toList());
-        for (int i = arr.size()-1; i > -1; i--) {
-            if (arr.get(i).getId() > id && user.getName().equals(arr.get(i).getUser())) {
-                arr.remove(i);
-                user.removeId(arr.get(i).getId());
+            int id = Integer.parseInt(arg);
+            //arr = arr.stream().filter(route -> route.getId() < id).collect(Collectors.toList());
+            for (int i = arr.size() - 1; i > -1; --i) {
+                if (arr.get(i).getId() > id && user.getName().equals(arr.get(i).getUser())) {
+                    arr.remove(i);
+                    user.removeId(arr.get(i).getId());
+                }
             }
+            return "Removed";
+        } finally {
+            lock.writeLock().unlock();
         }
-        return "Removed";
-    } finally {
-        lock.writeLock().unlock();
-    }
     }
 
 
@@ -243,7 +244,7 @@ public class MyCollection implements Serializable {
         lock.writeLock().lock();
         try {
         int distance = Integer.parseInt(arg);
-        arr = arr.stream().filter(route -> route.getDistance() != distance).collect(Collectors.toList());
+        //arr = arr.stream().filter(route -> route.getDistance() != distance).collect(Collectors.toList());
         for (int i = arr.size()-1; i > -1; i--) {
             if (arr.get(i).getDistance() == distance && user.getName().equals(arr.get(i).getUser())) {
                 arr.remove(i);

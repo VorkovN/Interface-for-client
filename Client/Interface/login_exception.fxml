@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Interface.AuthorizationExceptionWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="187.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Interface.AuthorizationExceptionWindow">
    <children>
       <AnchorPane prefHeight="39.0" prefWidth="467.0" style="-fx-background-color: #A52A2A;">
          <children>
@@ -21,11 +21,11 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="134.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пробуйте ещё ヽ(ー_ー )ノ ">
+      <Text layoutX="102.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пробуйте авторизоваться еще раз или зарегистрируйтесь ヽ(ー_ー )ノ " textAlignment="CENTER" wrappingWidth="300.283203125">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button fx:id="okButton" layoutX="173.0" layoutY="123.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Ок" />
+      <Button fx:id="okButton" layoutX="172.0" layoutY="147.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Ок" />
    </children>
 </AnchorPane>

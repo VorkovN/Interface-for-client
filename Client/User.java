@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class User implements Serializable {
-    private final String name;
-    private final String password;
+    private String name;
+    private String password;
     private boolean status;
     private String action;
     private Set<Integer> ids;;
@@ -17,12 +17,23 @@ public class User implements Serializable {
         ids = new HashSet<Integer>();
     }
 
+    public User() {
+    }
+
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean getStatus() {

@@ -17,7 +17,9 @@ public class HistoryCommand implements Command {
     }
 
     public MessageToServer execute(){
-        commandExecutor.history.forEach(System.out::println);
+        for (String cmd: commandExecutor.history) {
+            CommandExecutor.forPrint += ("\n" + cmd);
+        }
         return null;
     }
 

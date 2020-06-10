@@ -33,13 +33,11 @@ public class Server implements Runnable {
                     Object obj = fromClient.readObject();
                     if (obj instanceof Command) {
                         User user = (User) fromClient.readObject();
-                        user.setArr(myCollection.getArr());
                         Command cmd = (Command) obj;
                         executeIt.execute(new MessageHandler(socket, myCollection, cmd, user));//
                         System.out.println("Connection accepted. com");//
                     } else {
                         User user = (User) obj;
-                        user.setArr(myCollection.getArr());
                         executeIt.execute(new MessageHandler(socket, myCollection, user));//
                         System.out.println("Connection accepted. us");//
                     }

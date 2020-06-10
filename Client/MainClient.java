@@ -28,4 +28,11 @@ public class MainClient extends Application {
         newWindow(primaryStage, "Interface/start.fxml");
     }
 
+    //TODO неверный ввод координат
+    //TODO локализация
+    //TODO корзинка рядом со строкой
+    //TODO фикс execute_script
+    //TODO визуализация
+    //TODO исправить индексацию
+
 }

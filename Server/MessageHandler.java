@@ -36,6 +36,7 @@ public class MessageHandler implements Runnable  {
             command.setMyCollection(myCollection);
             myCollection.setUser(user);
             MessageToServer msg = command.execute();
+            user.setArr(myCollection.getArr());
             executeIt.execute(new Sender(socket, msg, user));//
         }
         else{
@@ -52,6 +53,7 @@ public class MessageHandler implements Runnable  {
                 registration.toRegistration(user);
                 executeIt.execute(new Sender(socket, user));//
             }
+            user.setArr(myCollection.getArr());
         }
     }
 }

@@ -39,11 +39,11 @@ public class MyCollection implements Serializable {
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
              Statement statement = connection.createStatement())
 
-        {
+        {      int i = 0;
             ResultSet resultSet = statement.executeQuery("SELECT * FROM routes");
             while (resultSet.next()){
                 Route newRoute = new Route();
-                newRoute.setId(resultSet.getInt("id")-1);
+                newRoute.setId(i);
                 newRoute.setName(resultSet.getString("name"));
                 newRoute.setX(resultSet.getFloat("x"));
                 newRoute.setY(resultSet.getDouble("y"));
@@ -57,6 +57,7 @@ public class MyCollection implements Serializable {
                 newRoute.setDistance(resultSet.getFloat("distance"));
                 newRoute.setUser(resultSet.getString("client"));
                 arr.add(newRoute);
+                ++i;
             }
             countId = arr.size();
 

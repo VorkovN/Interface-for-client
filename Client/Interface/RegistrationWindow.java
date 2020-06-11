@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
@@ -19,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
 public class RegistrationWindow {
 
     @FXML
-    private Text title;
+    private Label title;
 
     @FXML
     private TextField loginRegField;
@@ -35,6 +36,13 @@ public class RegistrationWindow {
 
     @FXML
     void initialize() {
+
+        title.setText(CommandExecutor.lang.getString("reg_titleText"));
+        backButton.setText(CommandExecutor.lang.getString("reg_button_backText"));
+        regButton.setText(CommandExecutor.lang.getString("reg_button_regText"));
+        passwordRegField.setPromptText(CommandExecutor.lang.getString("reg_field_passwordText"));
+        loginRegField.setPromptText(CommandExecutor.lang.getString("reg_field_nameText"));
+
 
         backButton.setOnAction(actionEvent -> {
             backButton.getScene().getWindow().hide();

@@ -21,7 +21,6 @@ public class CommandExecutor {
     public static ResourceBundle lang = ResourceBundle.getBundle("all", new Locale("ru"));
 
 
-
     private static final Map<String, Command> commands = new HashMap<>();
     public ArrayList<String> history = new ArrayList<>();
 

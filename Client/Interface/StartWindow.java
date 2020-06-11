@@ -57,8 +57,8 @@ public class StartWindow {
         title.setText(CommandExecutor.lang.getString("start_titleText"));
         toAutButton.setText(CommandExecutor.lang.getString("start_button_inText"));
         toRegButton.setText(CommandExecutor.lang.getString("start_button_regText"));
-        hostField.setText(CommandExecutor.lang.getString("start_field_hostText"));
-        portField.setText(CommandExecutor.lang.getString("start_field_portText"));
+        hostField.setPromptText(CommandExecutor.lang.getString("start_field_hostText"));
+        portField.setPromptText(CommandExecutor.lang.getString("start_field_portText"));
         langBox.setText(CommandExecutor.lang.getString("start_button_switchText"));
 
         ru.setOnAction(actionEvent -> {

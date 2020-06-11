@@ -148,11 +148,29 @@ public class ControllerWindow {
     @FXML
     void initialize(){
 
-        ru.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("ru")));
-        fr.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fr")));
-        fin.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fin")));
-        spa.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("spa")));
+        langBox.setText(CommandExecutor.lang.getString("sample_button_switchText"));
+        argumentField.setPromptText(CommandExecutor.lang.getString("sample_field_argText"));
 
+        ru.setOnAction(actionEvent -> {
+            CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("ru"));
+            langBox.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
+        fr.setOnAction(actionEvent -> {
+            CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fr"));
+            langBox.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
+        fin.setOnAction(actionEvent -> {
+            CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fin"));
+            langBox.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
+        spa.setOnAction(actionEvent -> {
+            CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("spa"));
+            langBox.getScene().getWindow().hide();
+            newWindow("start.fxml");
+        });
         table.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> System.out.println(newValue.getId()));
 

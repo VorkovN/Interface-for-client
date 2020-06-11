@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 public class AuthorizationWindow {
 
     @FXML
-    private Text title;
+    private Label title;
 
     @FXML
     private TextField loginAutField;
@@ -38,6 +39,17 @@ public class AuthorizationWindow {
 
     @FXML
     void initialize() {
+
+        title.setText(CommandExecutor.lang.getString("in_titleText"));
+        backButton.setText(CommandExecutor.lang.getString("in_button_backText"));
+        autButton.setText(CommandExecutor.lang.getString("in_button_inText"));
+        loginAutField.setPromptText(CommandExecutor.lang.getString("in_field_nameText"));
+        passwordAutField.setPromptText(CommandExecutor.lang.getString("in_field_passwordText"));
+
+
+
+
+
         backButton.setOnAction(actionEvent -> {
             backButton.getScene().getWindow().hide();
             newWindow("start.fxml");

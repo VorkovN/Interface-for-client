@@ -55,6 +55,9 @@ public class InitializationWindow {
 
     @FXML
     void initialize() {
+
+        okButton.setText(CommandExecutor.lang.getString("init_button_okText"));
+
         okButton.setOnAction(actionEvent -> {
             String name = nameField.getText();
             String x = xField.getText();

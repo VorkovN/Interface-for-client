@@ -114,6 +114,8 @@ public class MyCollection implements Serializable {
             newRoute.setId(++countId);
             arr.add(newRoute);
             user.addId(newRoute.getId());
+            sortRoutes();
+            getIds(user);
             return "Your values saved";
         } finally {
             lock.writeLock().unlock();
@@ -129,6 +131,8 @@ public class MyCollection implements Serializable {
                     arr.set(i, newRoute);
                 }
             }
+            sortRoutes();
+            getIds(user);
             return "Input your values";
         } finally {
             lock.writeLock().unlock();
@@ -145,12 +149,18 @@ public class MyCollection implements Serializable {
                     if (user.getName().equals(arr.get(id).getUser())) {
                         arr.remove(i);
                         user.removeId(id);
+                        sortRoutes();
+                        getIds(user);
                         return "Element is removed";
                     }
+                    sortRoutes();
+                    getIds(user);
                     return "This element isn't belong to user";
                 }
 
             }
+            sortRoutes();
+            getIds(user);
             return " No such element";
         } finally {
             lock.writeLock().unlock();
@@ -166,6 +176,8 @@ public class MyCollection implements Serializable {
                     arr.remove(i);
                 }
             }
+            sortRoutes();
+            getIds(user);
             return "List was cleared";
         } finally {
             lock.writeLock().unlock();
@@ -204,8 +216,11 @@ public class MyCollection implements Serializable {
             throwables.printStackTrace();
         }
         finally {
+            sortRoutes();
+            getIds(user);
         lock.readLock().unlock();
         }
+
         return "Saved";
     }
 
@@ -215,9 +230,13 @@ public class MyCollection implements Serializable {
         if (!arr.get(0).getUser().equals(user.getName())){
             user.removeId(arr.get(0).getId());
             arr.remove(0);
+            sortRoutes();
+            getIds(user);
             return "First element is removed";
         }
-        return "First element isn't belong to user";
+            sortRoutes();
+            getIds(user);
+            return "First element isn't belong to user";
         } finally {
             lock.writeLock().unlock();
         }
@@ -234,6 +253,8 @@ public class MyCollection implements Serializable {
                     user.removeId(arr.get(i).getId());
                 }
             }
+            sortRoutes();
+            getIds(user);
             return "Removed";
         } finally {
             lock.writeLock().unlock();
@@ -252,7 +273,9 @@ public class MyCollection implements Serializable {
                 user.removeId(arr.get(i).getId());
             }
         }
-        return "Removed";
+            sortRoutes();
+            getIds(user);
+            return "Removed";
         } finally {
             lock.writeLock().unlock();
         }
@@ -274,6 +297,8 @@ public class MyCollection implements Serializable {
         int distance = Integer.parseInt(arg);
         StringBuilder s = new StringBuilder();
         arr.stream().filter(route -> route.getDistance() > distance).forEach(route -> s.append(route.toString()).append("\n"));
+            sortRoutes();
+            getIds(user);
         return s.toString();
         } finally {
             lock.readLock().unlock();
@@ -300,6 +325,12 @@ public class MyCollection implements Serializable {
 
     public List<Route> getArr() {
         return arr;
+    }
+
+    public void sortRoutes(){
+        for (int i = 0; i < arr.size(); ++i){
+            arr.get(i).setId(i);
+        }
     }
 
 }

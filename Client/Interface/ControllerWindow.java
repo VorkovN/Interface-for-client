@@ -154,27 +154,27 @@ public class ControllerWindow {
         ru.setOnAction(actionEvent -> {
             CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("ru"));
             langBox.getScene().getWindow().hide();
-            newWindow("start.fxml");
+            newWindow("sample.fxml");
         });
         fr.setOnAction(actionEvent -> {
             CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fr"));
             langBox.getScene().getWindow().hide();
-            newWindow("start.fxml");
+            newWindow("sample.fxml");
         });
         fin.setOnAction(actionEvent -> {
             CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fin"));
             langBox.getScene().getWindow().hide();
-            newWindow("start.fxml");
+            newWindow("sample.fxml");
         });
         spa.setOnAction(actionEvent -> {
             CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("spa"));
             langBox.getScene().getWindow().hide();
-            newWindow("start.fxml");
+            newWindow("sample.fxml");
         });
+
+
         table.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> System.out.println(newValue.getId()));
-
-
+                (observable, oldValue, newValue) -> console.setText(console.getText() + "\n" + newValue.toString()));
 
 
         // устанавливаем тип и значение которое должно хранится в колонке
@@ -346,7 +346,10 @@ public class ControllerWindow {
                 }
 
                 setGraphic(deleteButton);
-                deleteButton.setOnAction(event -> routes.remove(route));
+                deleteButton.setOnAction(event -> {
+                    routes.remove(route);
+                    commandExecutor.execute("remove_by_id " + route.getId());
+                });
             }
         });
 
@@ -379,21 +382,12 @@ public class ControllerWindow {
             ObservableList<XYChart.Data<Number, Number>> datas1 = FXCollections.observableArrayList();
             datas1.removeAll(datas1);
             datas1.add(new XYChart.Data<Number, Number>((Number)route.getXl1(), (Number)route.getYl1()));
-            System.out.println(route.getXl1()+ " " + route.getYl1());
             datas1.add(new XYChart.Data<Number, Number>((Number)route.getXl2(), (Number)route.getYl2()));
-            System.out.println( route.getXl2()+ " " + route.getYl2());
             series1.setData(datas1);
             xyChart.getData().add(series1);
         }
 
     }
-
-    Button btn = new Button("delete");
-    //@FXML
-    //private void handleDeletePerson() {
-    //    int selectedIndex = table.getSelectionModel().getSelectedIndex();
-    //    table.getItems().remove(selectedIndex);
-    //}
 }
 
 

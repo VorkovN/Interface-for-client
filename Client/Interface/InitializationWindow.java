@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 
+import java.awt.*;
 import java.time.LocalDate;
 
 public class InitializationWindow {
@@ -17,8 +18,6 @@ public class InitializationWindow {
     User user = commandExecutor.getUser();
     Route newRoute = new Route();
 
-    @FXML
-    private Text title;
 
     @FXML
     private Button okButton;

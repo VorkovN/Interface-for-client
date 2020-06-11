@@ -29,10 +29,8 @@ public class MainClient extends Application {
     }
 
     //TODO неверный ввод координат
-    //TODO локализация
-    //TODO корзинка рядом со строкой
     //TODO фикс execute_script
-    //TODO визуализация
+    //TODO визуализация, добавить ууу-ууу-ууу
     //TODO исправить индексацию
 
 }

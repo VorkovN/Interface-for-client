@@ -3,6 +3,7 @@ package Client.Interface;
 import Client.CommandExecutor;
 import Client.User;
 import Route.Route;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -112,6 +113,9 @@ public class ControllerWindow {
 
     @FXML
     private TableColumn<Route, String> dateColumn;
+
+    @FXML
+    private TableColumn<Route, Route> deleteColumn;
 
     @FXML
     private Button exitButton;
@@ -289,6 +293,24 @@ public class ControllerWindow {
         user = commandExecutor.getUser();
         routes.removeAll(routes);
 
+        deleteColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        deleteColumn.setCellFactory(param -> new TableCell<Route, Route>() {
+            private final Button deleteButton = new Button("delete");
+
+            @Override
+            protected void updateItem(Route route, boolean empty) {
+                super.updateItem(route, empty);
+
+                if (route == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> routes.remove(route));
+            }
+        });
+
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         xColumn.setCellValueFactory(new PropertyValueFactory<>("x"));
@@ -306,6 +328,9 @@ public class ControllerWindow {
         // заполняем таблицу данными
         routes.addAll(user.getArr());
         table.setItems(routes);
+
+
+
     }
     public void toBuildChart(){
         xyChart.getData().removeAll(xyChart.getData());
@@ -324,11 +349,12 @@ public class ControllerWindow {
 
     }
 
-    @FXML
-    private void handleDeletePerson() {
-        int selectedIndex = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedIndex);
-    }
+    Button btn = new Button("delete");
+    //@FXML
+    //private void handleDeletePerson() {
+    //    int selectedIndex = table.getSelectionModel().getSelectedIndex();
+    //    table.getItems().remove(selectedIndex);
+    //}
 }
 
 

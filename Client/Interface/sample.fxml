@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -43,7 +42,7 @@
             <TableColumn fx:id="namel2Column" prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Namel2" />
             <TableColumn fx:id="distColumn" prefWidth="75.19998168945312" style="-fx-border-color: #696969;" text="       dist" />
             <TableColumn fx:id="dateColumn" prefWidth="104.79998779296875" style="-fx-border-color: #696969;" text="Date" />
-            <TableColumn fx:id="dateColumn1" prefWidth="77.0" style="-fx-border-color: #696969;" text="Date" />
+            <TableColumn fx:id="deleteColumn" prefWidth="77.0" style="-fx-border-color: #696969;" text="Button" />
         </columns>
       </TableView>
       <Button fx:id="exitButton" layoutX="1174.0" layoutY="609.0" mnemonicParsing="false" prefHeight="157.0" prefWidth="90.0" style="-fx-background-color: #800000;" text="Exit" textFill="#faf9fc" />

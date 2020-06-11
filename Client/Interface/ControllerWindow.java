@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -30,6 +31,12 @@ public class ControllerWindow {
     private ObservableList<Route> routes = FXCollections.observableArrayList();
     private CommandExecutor commandExecutor = CommandExecutor.getCommandExecutor();
     private User user = commandExecutor.getUser();
+
+    @FXML
+    private Label usr;
+
+    @FXML
+    private Label dat;
 
     @FXML
     private MenuItem ru;
@@ -300,6 +307,9 @@ public class ControllerWindow {
             updateTable();
             toBuildChart();
         });
+
+        usr.setText(user.getName());
+        dat.setText(LocalDate.now().toString());
     }
 
     public void newWindow(String window){
@@ -347,8 +357,10 @@ public class ControllerWindow {
 
                 setGraphic(deleteButton);
                 deleteButton.setOnAction(event -> {
-                    routes.remove(route);
-                    commandExecutor.execute("remove_by_id " + route.getId());
+                    if (route.getUser().equals(user.getName())) {
+                        routes.remove(route);
+                        commandExecutor.execute("remove_by_id " + route.getId());
+                    }
                 });
             }
         });

@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CommandExecutor {
 
@@ -20,6 +18,7 @@ public class CommandExecutor {
     public static String forPrint;
     private static CommandExecutor commandExecutor = null;
     private Route newRoute = null;
+    public static ResourceBundle lang = ResourceBundle.getBundle("all", new Locale("ru"));
 
 
 

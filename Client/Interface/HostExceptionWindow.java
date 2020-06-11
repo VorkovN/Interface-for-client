@@ -3,9 +3,13 @@ package Client.Interface;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import org.w3c.dom.Text;
 
 
 public class HostExceptionWindow {
+
+    @FXML
+    private Text title;
 
     @FXML
     private Button okButton;

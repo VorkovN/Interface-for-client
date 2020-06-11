@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -16,6 +17,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class RegistrationWindow {
+
+    @FXML
+    private Text title;
 
     @FXML
     private TextField loginRegField;

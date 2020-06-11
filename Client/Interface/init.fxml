@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #4682B4;">
          <children>
-            <Text layoutX="179.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
+            <Text fx:id="title" layoutX="179.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
                <font>
                   <Font size="23.0" />
                </font>

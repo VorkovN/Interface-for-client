@@ -7,6 +7,7 @@ import Route.Route;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,9 @@ public class InitializationWindow {
     CommandExecutor commandExecutor = CommandExecutor.getCommandExecutor();
     User user = commandExecutor.getUser();
     Route newRoute = new Route();
+
+    @FXML
+    private Text title;
 
     @FXML
     private Button okButton;

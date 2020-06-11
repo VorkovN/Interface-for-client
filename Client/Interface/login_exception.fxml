@@ -9,14 +9,14 @@
    <children>
       <AnchorPane prefHeight="39.0" prefWidth="467.0" style="-fx-background-color: #A52A2A;">
          <children>
-            <Text layoutX="113.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ошибка! Вы ошиблись">
+            <Text fx:id="title" layoutX="113.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ошибка! Вы ошиблись">
                <font>
                   <Font size="23.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="102.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Неверный логин или пароль">
+      <Text fx:id="tit" layoutX="102.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Неверный логин или пароль">
          <font>
             <Font size="20.0" />
          </font>

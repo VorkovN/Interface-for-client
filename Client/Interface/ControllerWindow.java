@@ -22,13 +22,26 @@ import org.w3c.dom.Text;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class ControllerWindow {
 
     private ObservableList<Route> routes = FXCollections.observableArrayList();
     private CommandExecutor commandExecutor = CommandExecutor.getCommandExecutor();
     private User user = commandExecutor.getUser();
-    private int ID;
+
+    @FXML
+    private MenuItem ru;
+
+    @FXML
+    private MenuItem fr;
+
+    @FXML
+    private MenuItem fin;
+
+    @FXML
+    private MenuItem spa;
 
     @FXML
     private Button helpButton;
@@ -130,7 +143,15 @@ public class ControllerWindow {
     private LineChart<Number, Number> xyChart;
 
     @FXML
+    private MenuButton langBox;
+
+    @FXML
     void initialize(){
+
+        ru.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("ru")));
+        fr.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fr")));
+        fin.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("fin")));
+        spa.setOnAction(actionEvent -> CommandExecutor.lang = ResourceBundle.getBundle("all", new Locale("spa")));
 
         table.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> System.out.println(newValue.getId()));

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -18,6 +19,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class AuthorizationWindow {
 
+    @FXML
+    private Text title;
 
     @FXML
     private TextField loginAutField;
